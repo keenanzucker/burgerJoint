@@ -1,0 +1,35 @@
+<h1>Welcome to da Ingredients Page</h1>
+
+<h3>Ingredients List</h3>
+
+
+<table style="width:100%">
+<tr>
+  <th>Ingredient</th>
+  <th>Price</th>
+  <th>In Stock</th>
+  <th>Edit</th>
+</tr>
+  {{#each ingredients}}
+  <tr>
+   <td>{{name}}</td>
+   <td>{{price}}</td>
+   <td>{{stock}}</td>
+   <td><input type="submit" name="stock" value="Out of Stock" /></td>
+   <td><input type="submit" name="edit" value="Edit" /></td>
+  </tr>
+  {{/each}}
+</table>
+
+
+
+
+<br>
+<!-- <input type="submit" name="edit" value="ADD NEW INGREDIENT" /> -->
+<h2>ADD NEW</h2>
+
+<form id="addNew-form" action="new" method="POST">
+  Ingredient: <input type="text" name="name"/><br/>
+  Price: <input type="text" name="price"/><br/>
+  <input type="submit" value="Submit">
+</form>
