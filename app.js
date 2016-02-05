@@ -23,6 +23,8 @@ app.get('/', index.showIngredients);
 
 app.get('/ingredients', index.showIngredients);
 app.post('/new', index.addNewIngredient);
+app.post('/edit', index.editIngredient);
+
 
 
 // app.get('/order', index.order);

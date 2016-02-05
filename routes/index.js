@@ -5,8 +5,6 @@ var Model = require('../models/orderModel');
 
 var routes = {};
 
-var i1 = {name: "tomato", price: '12', stock: 'true'};
-
 routes.showIngredients = function(req, res){
 
   Ingredient.find({}, function(err, data){
@@ -29,7 +27,23 @@ routes.addNewIngredient = function(req, res) {
     else{
       console.log("Ingredient Added: " + req.body.name);
     }
-  })
+  });
+
+};
+
+routes.editIngredient = function(req ,res){
+
+  // new Ingredient({
+  //   name: req.body.name,
+  //   price: req.body.price,
+  //   stock: true
+  // }).update(function(err){
+  //   if (err) console.log(err);
+  //   else{
+  //     console.log("Ingredient Added: " + req.body.name);
+  //   }
+  // });
+
 };
 
 module.exports = routes;

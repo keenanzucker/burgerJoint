@@ -6,9 +6,12 @@
 
 <form>
   {{#each ingredient}}
-  <input type="checkbox" name="vehicle1" value="Bike">{{name}} {{price}}
-  <br>
+  <input type="checkbox" name="name">{{name}} ... {{price}} >   <br>
+  <input type="checkbox" name="name">{{name}} ... {{price}} >   <br>
+  <input type="checkbox" name="name">{{name}} ... {{price}} >   <br>
 
+  <br>
+  {{/each}}
   <input type="submit" value="Place Order!">
 </form>
 
@@ -16,12 +19,3 @@
 
 
 
-<!-- <br>
-<input type="submit" name="edit" value="ADD NEW INGREDIENT" />
-
-<form id="addNew-form" action="addNewIngredient" method="POST">
-  Ingredient: <input type="text" name="name"/><br/>
-  Price: <input type="text" name="price"/><br/>
-  <input type="submit" value="Submit">
-</form>
- -->
