@@ -2,31 +2,44 @@
 
 <h3>Ingredients List</h3>
 
-
-<table style="width:100%">
+<table id="ing-table">
 <tr>
   <th>Ingredient</th>
   <th>Price</th>
-  <th>In Stock</th>
+  <th>Stock?</th>
+  <th>Change Stock</th>
   <th>Edit</th>
 </tr>
   {{#each ingredients}}
   <tr>
-   <td>{{name}}</td>
-   <td>{{price}}</td>
-   <td>{{stock}}</td>
-   <td><input type="submit" name="stock" value="Out of Stock" /></td>
-   <td><input type="submit" name="edit" value="Edit" /></td>
+  <form id={{this._id}} class="stock-form" action="outOfStock" method="POST">
+    
+     <td id="ing-name">{{name}}</td>
+     <td id="ing-price">{{price}}</td>
+     <td id="ing-stock">{{stock}}</td>
+     <td><input type="submit" value="Out of Stock"/></td>
+     <td><input id="edit-button" type="button" name="edit" value="Edit"/> 
+     </td>
+    
+  </form>
   </tr>
   {{/each}}
 </table>
-
 
 <br >
 <input style="padding:2%" type="submit" id="add-id" value="ADD NEW INGREDIENT"/>
 
 <form id="new-form" action="new" method="POST">
-  Ingredient: <input type="text" name="name"/><br/>
-  Price: <input type="text" name="price"/><br/>
+  <input type="text" name="name" placeholder="ingredient name"/><br/>
+  <input type="text" name="price" placeholder="price"/><br/>
   <input type="submit" value="Submit">
+</form>
+
+<br>
+<br>
+<br>
+<form id="edit-form" action="edit" method=POST>
+  <input id="editName" type="text" placeholder="new name"> 
+  <input id="editCost" type="text" placeholder="new price">
+  <input id="editSubmit" type="button" value="Submit">
 </form>

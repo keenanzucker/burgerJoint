@@ -1,0 +1,35 @@
+<h1>Welcome to da Kitchen</h1>
+
+<h3>Order List</h3>
+
+<table id="order-list">
+<tr>
+  <th>Ingredient</th>
+  <th>Price</th>
+  <th>Stock?</th>
+  <th>Change Stock</th>
+  <th>Edit</th>
+</tr>
+  {{#each ingredients}}
+  <tr>
+  <form id={{this._id}} class="stock-form" action="outOfStock" method="POST">
+    
+     <td>{{name}}</td>
+     <td>{{price}}</td>
+     <td>{{stock}}</td>
+     <td><input type="submit" value="Out of Stock"/></td>
+     <td><input type="button" name="edit" value="Edit" /></td>
+    
+  </form>
+  </tr>
+  {{/each}}
+</table>
+
+<br >
+<input style="padding:2%" type="submit" id="add-id" value="ADD NEW INGREDIENT"/>
+
+<form id="new-form" action="new" method="POST">
+  Ingredient: <input type="text" name="name"/><br/>
+  Price: <input type="text" name="price"/><br/>
+  <input type="submit" value="Submit">
+</form>

@@ -2,20 +2,23 @@
 
 <h3>Ingredients List</h3>
 
-<h4>Running Total: {{total}}</h4>
+<h4>Running Total:</h4>
+<h3 id="runningTotal">$0.00</h3>
+<!-- Use front end to get total -->
 
-<form>
-  {{#each ingredient}}
-  <input type="checkbox" name="name">{{name}} ... {{price}} >   <br>
-  <input type="checkbox" name="name">{{name}} ... {{price}} >   <br>
-  <input type="checkbox" name="name">{{name}} ... {{price}} >   <br>
-
-  <br>
+<form id="order-form" action="place" method=POST>
+  {{#each ingredients}}
+	  <input type="checkbox" 
+	  	class="ingredient"
+	  	id={{_id}} 
+	  	name={{name}} 
+	  	{{#unless this.stock}} 	
+	  		disabled 
+	  	{{/unless}}>
+	  {{name}} ... {{price}}  <br>
   {{/each}}
-  <input type="submit" value="Place Order!">
+  <br>
+  <input type="text" name="orderName" placeholder="Order Name"/>
+  <input type="submit" value="Place Order!"/>
 </form>
-
-
-
-
 

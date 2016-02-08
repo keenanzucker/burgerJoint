@@ -1,7 +1,12 @@
 var mongoose = require("mongoose");
 
-var orderSchema = mongoose.Schema({
+var order = mongoose.Schema({
 
-	names: []
+	ingredients: [String],
+	name: String,
+	complete: Boolean,
+	cost: Number
 	
-});
+}, {collection: "order"});
+
+module.exports = mongoose.model("order", order);

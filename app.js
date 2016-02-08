@@ -24,10 +24,12 @@ app.get('/', index.showIngredients);
 app.get('/ingredients', index.showIngredients);
 app.post('/new', index.addNewIngredient);
 app.post('/edit', index.editIngredient);
+app.post('/outOfStock', index.outOfStock);
+
+app.get('/order', index.showIngredientsOrder);
+app.post('/place', index.placeOrder);
 
 
-
-// app.get('/order', index.order);
 // app.get('/kitchen', index.kitchen);
 
 

@@ -1,0 +1,28 @@
+{
+  "name": "burgerjoint",
+  "version": "1.0.0",
+  "description": "Homework project for Olin.JS 2016",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.4.1",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keenanzucker/burgerJoint.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keenanzucker/burgerJoint/issues"
+  },
+  "homepage": "https://github.com/keenanzucker/burgerJoint#readme"
+}
