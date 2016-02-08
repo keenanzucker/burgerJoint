@@ -46,7 +46,7 @@ routes.placeOrder = function(req, res){
 
   console.log(req.body);
   new Order({
-    ingredients: req.body["ingredients[]"],
+    ingredients: req.body.ingredients,
     name: req.body.name,
     complete: false,
   }).save(function(err, val){

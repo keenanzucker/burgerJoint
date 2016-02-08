@@ -50,7 +50,7 @@ $orderForm.submit(function(event){
   console.log(ingredients);
 
   formData = {
-    ingredients: ingredients,
+    ingredients: JSON.stringify(ingredients),
     name: name,
     complete: false,
   }
