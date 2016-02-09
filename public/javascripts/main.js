@@ -52,7 +52,7 @@ $orderForm.submit(function(event){
   var name = $orderForm.find("[name='orderName']").val();
 
   formData = {
-    ingredients: ingredients,
+    ingredients: JSON.stringify(ingredients),
     price: sum,
     name: name,
     complete: false,
