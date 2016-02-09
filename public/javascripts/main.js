@@ -176,10 +176,9 @@ $editForm.submit(function(event){
     .done(function(data, status){
     console.log(data);
 
-    // $(".ing-row").each(function(){
-    //   $(this).html($(this).html().replace(data.oldName, data.name));
-    //   $(this).html($(this).html().replace(data.oldCost, parseFloat(data.price)));
-    // });
+    $("td:contains('"+data.oldName+"')").text(data.name);
+    $("td:contains('"+data.oldCost+"')").text(data.price);
+
 
     console.log("THE FORM WAS EDITED");
     $('#edit-form').hide();
