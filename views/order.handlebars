@@ -10,7 +10,8 @@
   {{#each ingredients}}
 	  <input type="checkbox" 
 	  	class="ingredient"
-	  	id={{_id}} 
+	  	id={{_id}}
+	  	value={{price}} 
 	  	name={{name}} 
 	  	{{#unless this.stock}} 	
 	  		disabled 

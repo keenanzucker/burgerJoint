@@ -37,25 +37,28 @@ var $orderForm = $("#order-form");
 $orderForm.submit(function(event){
 
   event.preventDefault();
-  formData = $orderForm.serialize();
+
   var sum = 0;
 
-  ingredients = $("input:checked").map(function(){
-    return this.name;
+  var ingredients = []
+
+  $("input:checkbox:checked").each(function(){
+    sum += parseFloat(this.value);
+    ingredients.push(this.name);
   });
 
-  var name = $orderForm.find("[name='orderName']").val();
-  ingredients = ingredients.toArray();
-
   console.log(ingredients);
+  console.log(sum)
+  var name = $orderForm.find("[name='orderName']").val();
 
   formData = {
     ingredients: JSON.stringify(ingredients),
+    price: sum,
     name: name,
     complete: false,
   }
 
-  console.log(formData)
+  console.log("formDataCreated", formData)
 
   $.post('place', formData)
   .done(function(data, status)

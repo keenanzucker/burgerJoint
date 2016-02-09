@@ -3,16 +3,10 @@
 <h3>Order List</h3>
 
 <table id="order-list">
-<tr>
-  <th>Ingredient</th>
-  <th>Price</th>
-  <th>Stock?</th>
-  <th>Change Stock</th>
-  <th>Edit</th>
-</tr>
-  {{#each ingredients}}
+
+  {{#each order}}
   <tr>
-  <form id={{this._id}} class="stock-form" action="outOfStock" method="POST">
+  <form id={{this._id}} class="kitchen-form" action="orderComplete" method="POST">
     
      <td>{{name}}</td>
      <td>{{price}}</td>
