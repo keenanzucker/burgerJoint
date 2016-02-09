@@ -1,0 +1,14 @@
+<h1>Welcome to da Kitchen</h1>
+
+<h3>Order List</h3>
+  {{#each order}}
+    <form id={{_id}}class="kitchen-form" action="kitchen" method=POST>
+        <h5>{{this.name}} <span style="padding-left: 20px"></span> <span><input type="button" name="completeOrder" value="Complete"/></span></h5> 
+        <ul>
+          {{#each order.ingredients}}
+          <li>{{this}}</li> 
+          {{/each}}
+        </ul>
+  {{/each}}
+    </form>
+

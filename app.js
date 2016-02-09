@@ -29,8 +29,9 @@ app.post('/outOfStock', index.outOfStock);
 app.get('/order', index.showIngredientsOrder);
 app.post('/place', index.placeOrder);
 
+app.get('/kitchen', index.showOrders);
+app.post('/complete', index.completeOrder);
 
-// app.get('/kitchen', index.kitchen);
 
 
 mongoose.connect('mongodb://keenan:olinjs@ds055495.mongolab.com:55495/burger');

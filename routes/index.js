@@ -25,6 +25,17 @@ routes.showIngredientsOrder = function(req, res){
   });
 }
 
+routes.showOrders = function(req, res){
+
+  Order.find().sort({cost:-1}).exec(function(err, data){
+    if (err) console.log(err);
+    else{
+      console.log("Showing Orders!");
+      res.render('kitchen', {order: data});
+    }
+  });
+}
+
 routes.addNewIngredient = function(req, res) {
   
   new Ingredient({
@@ -49,7 +60,7 @@ routes.placeOrder = function(req, res){
     name: req.body.name,
     complete: false,
   })
-
+  console.log(OrderX)
   OrderX.save(function(err, val){
     if (err) console.log(err);
     else {
@@ -75,6 +86,21 @@ routes.outOfStock = function(req, res){
   });
 }
 
+routes.completeOrder = function(req, res){
+
+  var ingId = req.body.id;
+  console.log(ingId);
+
+  Order.findByIdAndUpdate(ingId, {complete: true}, function(err, val){
+    if (err) console.log(err);
+    else {
+      console.log("Order Completed!");
+      res.send(ingId);
+    }
+  });
+}
+
+
 routes.editIngredient = function(req ,res){
 
   var newName = req.body.name;
@@ -90,7 +116,6 @@ routes.editIngredient = function(req ,res){
       res.send(ingId);
     }
   });
-
 }
 
 

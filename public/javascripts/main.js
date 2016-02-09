@@ -51,7 +51,7 @@ $orderForm.submit(function(event){
   console.log(sum)
   var name = $orderForm.find("[name='orderName']").val();
 
-  formData = {
+  var formData = {
     ingredients: ingredients,
     price: sum,
     name: name,
@@ -59,18 +59,40 @@ $orderForm.submit(function(event){
   }
 
   console.log("formDataCreated", formData)
-
-  $.post('place', formData)
-  .done(function(data, status)
-  {
-    console.log(data);
-  })
-  .error(onError);
+  $.ajax({
+    url: 'place',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(formData)
+  }
+  );
 
 });
 
 // =====================
 
+// Complete Order Button
+
+var $kitchenForm = $(".kitchen-form");
+
+$kitchenForm.submit(function(event){
+
+  event.preventDefault();
+  var id = event.target.getAttribute('id');
+
+  formData = {
+   id: id
+  }
+
+  $.post("complete", formData)
+    .done(function(data, status){
+      console.log("#"+data);
+      $("#"+data).parent().hide();
+    })
+    .error(onError);
+});
+
+// ======================
 
 
 
