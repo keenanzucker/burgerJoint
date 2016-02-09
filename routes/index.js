@@ -54,9 +54,10 @@ routes.addNewIngredient = function(req, res) {
 
 routes.placeOrder = function(req, res){
 
-  console.log("BODEY", req.body);
+  console.log("BODY", req.body);
   var OrderX = new Order({
     ingredients: req.body.ingredients,
+    cost: req.body.cost,
     name: req.body.name,
     complete: false,
   })

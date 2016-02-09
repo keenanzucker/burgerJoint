@@ -6,6 +6,11 @@ $(document).ready(function(){
     $('#new-form').toggle('show');
   });
 
+// Error Handling for all Callbacks
+var onError = function(data, status) {
+  console.log("status", status);
+  console.log("error", data);
+};
 
 // Change Stock Button
 var $stockForm = $(".stock-form");
@@ -13,7 +18,6 @@ var $stockForm = $(".stock-form");
 $stockForm.submit(function(event){
 
   event.preventDefault();
-
   var id = event.target.getAttribute('id');
 
   formData = {
@@ -24,22 +28,32 @@ $stockForm.submit(function(event){
     .done(function(data, status){
       console.log("#"+data);
       $("#"+data).parent().hide();
-
     })
     .error(onError);
 });
 //  ===============================
 
-// Submit Order
-
+// Place Order
 var $orderForm = $("#order-form");
+var sum = 0;
+
+$(".ingredient").change(function(){
+  if(this.checked) {
+    console.log(this.value);
+    sum+=parseFloat(this.value);
+  }
+  if(!this.checked){
+    console.log('UNCHECK');
+    sum-=parseFloat(this.value);
+  }
+  $("#runningTotal").html("$" + sum);
+});
+
 
 $orderForm.submit(function(event){
 
   event.preventDefault();
-
   var sum = 0;
-
   var ingredients = []
 
   $("input:checkbox:checked").each(function(){
@@ -53,7 +67,7 @@ $orderForm.submit(function(event){
 
   var formData = {
     ingredients: ingredients,
-    price: sum,
+    cost: sum,
     name: name,
     complete: false,
   }
@@ -66,13 +80,10 @@ $orderForm.submit(function(event){
     data: JSON.stringify(formData)
   }
   );
-
 });
-
 // =====================
 
 // Complete Order Button
-
 var $kitchenForm = $(".kitchen-form");
 
 $kitchenForm.submit(function(event){
@@ -81,27 +92,15 @@ $kitchenForm.submit(function(event){
   var id = event.target.getAttribute('id');
 
   console.log(id);
- 
-
     $.post("complete", {id: id})
     .done(function(data, status){
        $("#"+id).remove();
     })
     .error(onError);
-
-
 });
-
 // ======================
 
-
-
-
-
-// ================
-
 // Add New Ingredient Button
-// ===============================
 var $form = $("#new-form");
 
 var onSuccess = function(data, status) {
@@ -123,11 +122,6 @@ var onSuccess = function(data, status) {
 
 };
 
-var onError = function(data, status) {
-  console.log("status", status);
-  console.log("error", data);
-};
-
 $form.submit(function(event) {
 
   event.preventDefault();
@@ -144,12 +138,10 @@ $form.submit(function(event) {
     .done(onSuccess)
     .error(onError);
 });
-
 // ============================
 
 
 // Edit Ingredient Button
-
 $("#edit-button").click(function(){
   var $row= $(this).closest("tr");
   var $name = $row.find("#ing-name").text();
@@ -157,8 +149,10 @@ $("#edit-button").click(function(){
   $('#edit-form').toggle('show');
 
 });
+//  ============================
 
 // $("editSubmit").click(funtion(){
 
 // });
+
 });
