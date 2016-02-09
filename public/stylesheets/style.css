@@ -10,3 +10,25 @@ a {
 #new-form {
 	margin: 2%
 }
+
+h1 {
+	padding: 20px;
+	text-align: center;
+	font-size: 36px;
+	color: teal;
+}
+
+h3 {
+	padding: 10px;
+	text-align: center;
+	font-size: 25px
+}
+
+input {
+	margin: 5px;
+	padding: 5px;
+	background-color: #e6e6e6;
+	border-radius: 5px;
+
+	font-family: sans-serif;
+}
