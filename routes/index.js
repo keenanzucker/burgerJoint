@@ -91,7 +91,7 @@ routes.completeOrder = function(req, res){
   var ingId = req.body.id;
   console.log(ingId);
 
-  Order.findByIdAndUpdate(ingId, {complete: true}, function(err, val){
+  Order.findByIdAndRemove(ingId, function(err, val){
     if (err) console.log(err);
     else {
       console.log("Order Completed!");

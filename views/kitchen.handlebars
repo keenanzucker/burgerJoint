@@ -2,13 +2,14 @@
 
 <h3>Order List</h3>
   {{#each order}}
-    <form id={{_id}}class="kitchen-form" action="kitchen" method=POST>
-        <h5>{{this.name}} <span style="padding-left: 20px"></span> <span><input type="button" name="completeOrder" value="Complete"/></span></h5> 
+    <form id={{this._id}} class="kitchen-form" action="complete" method=POST>
+        <h5>{{this.name}} -- {{this.cost}}<span style="padding-left: 20px"></span> <span><input type="submit" name="completeOrder" value="Complete"/></span></h5> 
         <ul>
-          {{#each order.ingredients}}
+          {{#each this.ingredients}}
           <li>{{this}}</li> 
           {{/each}}
         </ul>
+       </form> 
   {{/each}}
-    </form>
+    
 

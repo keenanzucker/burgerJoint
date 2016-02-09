@@ -80,16 +80,16 @@ $kitchenForm.submit(function(event){
   event.preventDefault();
   var id = event.target.getAttribute('id');
 
-  formData = {
-   id: id
-  }
+  console.log(id);
+ 
 
-  $.post("complete", formData)
+    $.post("complete", {id: id})
     .done(function(data, status){
-      console.log("#"+data);
-      $("#"+data).parent().hide();
+       $("#"+id).remove();
     })
     .error(onError);
+
+
 });
 
 // ======================
