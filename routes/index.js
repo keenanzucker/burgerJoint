@@ -63,7 +63,7 @@ routes.editIngredient = function(req ,res){
     if (err) console.log(err);
     else {
       console.log("Ingredient Editted!", newName, newPrice);
-      res.send(val);
+      res.send({id:old, name:newName, price:newPrice, oldName:val.name, oldCost:val.price});
     }
   });
 }

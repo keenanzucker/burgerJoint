@@ -72,6 +72,9 @@ $orderForm.submit(function(event){
     complete: false,
   }
 
+  $("#order-form").after("<p class='congrats'>YOU SUBMITTED AN ORDER!</p>");
+  $(".congrats").fadeOut(3000);
+
   console.log("formDataCreated", formData)
   $.ajax({
     url: 'place',
@@ -106,8 +109,9 @@ var $form = $("#new-form");
 var onSuccess = function(data, status) {
 
   var table = document.getElementById("ing-table");
+  var rowCount = $("#ing-table tr").length;
 
-  var row = table.insertRow(1);
+  var row = table.insertRow(rowCount);
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
@@ -120,6 +124,7 @@ var onSuccess = function(data, status) {
   cell4.innerHTML = "<input type='submit' value='Out of Stock'/>"
   cell5.innerHTML = "<input type='button' name='edit' value='Edit' />"
 
+  $('#new-form').hide();
 };
 
 $form.submit(function(event) {
@@ -156,8 +161,6 @@ var $editForm = $("#edit-form");
 $editForm.submit(function(event){
   event.preventDefault();
 
-  console.log(edittingId);
-
   var newName = $editForm.find("[name='editName']").val();
   var newCost = $editForm.find("[name='editCost']").val();
 
@@ -171,8 +174,15 @@ $editForm.submit(function(event){
 
   $.post("edit", formData)
     .done(function(data, status){
-      // console.log(data.name);
-      console.log("THE FORM WAS EDITED");
+    console.log(data);
+
+    // $(".ing-row").each(function(){
+    //   $(this).html($(this).html().replace(data.oldName, data.name));
+    //   $(this).html($(this).html().replace(data.oldCost, parseFloat(data.price)));
+    // });
+
+    console.log("THE FORM WAS EDITED");
+    $('#edit-form').hide();
 
     })
     .error(onError);

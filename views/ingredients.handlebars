@@ -11,16 +11,14 @@
   <th>Edit</th>
 </tr>
   {{#each ingredients}}
-  <tr>
+  <tr class="ing-row">
   <form id={{this._id}} class="stock-form" action="outOfStock" method="POST">
-    
-     <td id="ing-name">{{name}}</td>
-     <td id="ing-price">{{price}}</td>
-     <td id="ing-stock">{{stock}}</td>
+     <td class="ing-name">{{name}}</td>
+     <td class="ing-price">{{price}}</td>
+     <td class="ing-stock">{{stock}}</td>
      <td><input type="submit" value="Out of Stock"/></td>
      <td><input id={{this._id}} class="edit-button" type="button" value="Edit"/> 
      </td>
-    
   </form>
   </tr>
   {{/each}}
