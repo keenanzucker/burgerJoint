@@ -18,7 +18,7 @@
      <td id="ing-price">{{price}}</td>
      <td id="ing-stock">{{stock}}</td>
      <td><input type="submit" value="Out of Stock"/></td>
-     <td><input id="edit-button" type="button" name="edit" value="Edit"/> 
+     <td><input id={{this._id}} class="edit-button" type="button" value="Edit"/> 
      </td>
     
   </form>
@@ -38,8 +38,9 @@
 <br>
 <br>
 <br>
+
 <form id="edit-form" action="edit" method=POST>
-  <input id="editName" type="text" placeholder="new name"> 
-  <input id="editCost" type="text" placeholder="new price">
-  <input id="editSubmit" type="button" value="Submit">
+  <input name="editName" type="text" placeholder="new name"> 
+  <input name="editCost" type="text" placeholder="new price">
+  <input type="submit" value="Submit">
 </form>

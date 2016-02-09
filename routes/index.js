@@ -49,8 +49,25 @@ routes.addNewIngredient = function(req, res) {
       res.send(val);
     }
   });
-
 }
+
+routes.editIngredient = function(req ,res){
+
+  var newName = req.body.name;
+  var newPrice = req.body.price;
+  var old = req.body.oldId;
+
+  console.log(newName);
+
+  Ingredient.findByIdAndUpdate(old, {name: newName, price: newPrice}, function(err, val){
+    if (err) console.log(err);
+    else {
+      console.log("Ingredient Editted!", newName, newPrice);
+      res.send(val);
+    }
+  });
+}
+
 
 routes.placeOrder = function(req, res){
 
@@ -102,22 +119,6 @@ routes.completeOrder = function(req, res){
 }
 
 
-routes.editIngredient = function(req ,res){
-
-  var newName = req.body.name;
-  var newPrice = req.body.price;
-  var ingId = req.body.id;
-
-  Ingredient.findByIdAndUpdate(ingId, {name: newName, price: newPrice}, function(err, val){
-    if (err) console.log(err);
-    else {
-
-      console.log("Ingredient Editted!");
-      console.log(val.name + val.price);
-      res.send(ingId);
-    }
-  });
-}
 
 
 

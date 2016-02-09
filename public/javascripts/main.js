@@ -125,7 +125,7 @@ var onSuccess = function(data, status) {
 $form.submit(function(event) {
 
   event.preventDefault();
-  formData = $form.serialize();
+  // formData = $form.serialize();
   var name = $form.find("[name='name']").val();
   var price = $form.find("[name='price']").val();
   formData = {
@@ -142,17 +142,43 @@ $form.submit(function(event) {
 
 
 // Edit Ingredient Button
-$("#edit-button").click(function(){
-  var $row= $(this).closest("tr");
-  var $name = $row.find("#ing-name").text();
 
+var edittingId = 0;
+
+$(".edit-button").click(function(){
+  console.log("Clicked", this.id);
+  edittingId = this.id;
   $('#edit-form').toggle('show');
-
 });
-//  ============================
 
-// $("editSubmit").click(funtion(){
+var $editForm = $("#edit-form");
 
-// });
+$editForm.submit(function(event){
+  event.preventDefault();
+
+  console.log(edittingId);
+
+  var newName = $editForm.find("[name='editName']").val();
+  var newCost = $editForm.find("[name='editCost']").val();
+
+  formData = {
+    oldId: edittingId,
+    name: newName,
+    price: newCost,
+  };
+
+  console.log(formData);
+
+  $.post("edit", formData)
+    .done(function(data, status){
+      // console.log(data.name);
+      console.log("THE FORM WAS EDITED");
+
+    })
+    .error(onError);
+});
+
+
+
 
 });
