@@ -43,17 +43,18 @@ routes.addNewIngredient = function(req, res) {
 
 routes.placeOrder = function(req, res){
 
-
-  console.log(req.body);
-  new Order({
-    ingredients: req.body["ingredients[]"],
+  console.log("BODEY", req.body);
+  var OrderX = new Order({
+    ingredients: req.body.ingredients,
     name: req.body.name,
     complete: false,
-  }).save(function(err, val){
+  })
+
+  OrderX.save(function(err, val){
     if (err) console.log(err);
     else {
       console.log("ORDER PLACED!");
-      console.log(val.name);
+      console.log(val.ingredients);
       res.send(val);
     }
   });
