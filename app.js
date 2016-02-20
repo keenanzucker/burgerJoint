@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// Group your calls into GET reqs and POST reqs groupings. Easier to read your code.
 app.get('/', index.showIngredients);
 
 app.get('/ingredients', index.showIngredients);
@@ -33,7 +35,7 @@ app.get('/kitchen', index.showOrders);
 app.post('/complete', index.completeOrder);
 
 
-
+// aight aight
 mongoose.connect('mongodb://keenan:olinjs@ds055495.mongolab.com:55495/burger');
 
 var PORT = process.env.PORT || 3000;
